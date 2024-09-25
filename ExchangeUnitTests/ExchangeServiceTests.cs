@@ -12,6 +12,8 @@ public class ExchangeServiceTests
     [InlineData("USD/DKK 1", "6.6311")]
     [InlineData("USD/DKK 100", "663.1100")]
     [InlineData("DKK/USD 663", "99.9834")]
+    [InlineData("USD/EUR 1", "1.1219")]
+    [InlineData("EUR/USD 1", "0.8913")]
     public void Convert_WithValidInput_Succeeds(string inputStr, string expectedOutput)
     {
         // Arrange

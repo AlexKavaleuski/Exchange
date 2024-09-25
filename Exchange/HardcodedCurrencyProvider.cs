@@ -28,6 +28,14 @@ public class HardcodedCurrencyProvider : ICurrencyProvider
         if (pair.MainCurrency == Currency.DKK)
             return 100 / dkkRates[pair.MoneyCurrency];
 
+        if (dkkRates.ContainsKey(pair.MainCurrency) && dkkRates.ContainsKey(pair.MoneyCurrency))
+        {
+            decimal rateToDKKFromMain = dkkRates[pair.MainCurrency];
+            decimal rateToDKKFromMoney = dkkRates[pair.MoneyCurrency];
+
+            return rateToDKKFromMoney / rateToDKKFromMain;
+        }
+
         throw new NotSupportedException($"Exchange rate for {pair.MainCurrency}/{pair.MoneyCurrency} not supported.");
     }
 }
